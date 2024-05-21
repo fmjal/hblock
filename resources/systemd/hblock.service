@@ -6,6 +6,7 @@ Type=oneshot
 ExecStart=/bin/sh -c 'exec hblock -O "%C/hblock/hosts"'
 ExecStartPost=+/bin/sh -c 'exec cat "%C/hblock/hosts" > /etc/hosts'
 ExecStartPost=-/bin/sh -c 'exec rm -f "%C/hblock/hosts"'
+ExecStartPost=+/usr/bin/systemctl restart dnsmasq.service
 CacheDirectory=hblock
 UMask=0077
 DynamicUser=yes
